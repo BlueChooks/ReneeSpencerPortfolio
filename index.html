@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DES309 Task-1</title>
+        <link rel="stylesheet" href="./style.css" />
+        <style type="text/css">
+            @media (min-width: 600px) {
+                main {
+                    position: absolute;
+                    background-color: #fff;
+                    border-radius: 20px;
+                    height: 35%;
+                    width: 35%;
+                    box-shadow: var(--float-shadow);
+                    /* box-shadow: 0px 0px 20px #444; */
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                
+                main.transformed {
+                    order: 1;
+                    position: relative;
+                    height: 100%;
+                    width: 66%;
+                    border-radius: 0;
+                    /* align-items: flex-start; */
+                    justify-content: flex-start;
+                    padding-left: var(--main-padding);
+                }
+
+                flip-board.transformed {
+                    order: 2;
+                    height: 100%;
+                    width: 34%;
+                }
+
+                .detail {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    height: 100%;
+                    padding-top: 30%;
+                }
+
+            }
+        </style>
+    </head>
+    <body>
+        <flip-board></flip-board>
+        <main>
+            <bounce-text class="welcome">welcome</bounce-text>
+
+            <div class="detail hidden">
+                <bounce-text fixed="true" style="--bounce-size: 55px">renee.spencer</bounce-text>
+                <p>web developer // UI designer // interactive artist</p>
+                <div class="btn-container">
+                    <a class="btn-link btn-primary" href="#">see my work</a>
+                    <a class="btn-link btn-secondary" href="#">come say hi</a>
+                </div>
+            </div>
+        </main>
+        <script src="./components/flip-board.js"></script>
+        <script src="./components/bounce-text.js"></script>
+        <script>
+            let body = document.querySelector('body');
+            let main = document.querySelector('main');
+            let flip = document.querySelector('flip-board');
+
+            main.addEventListener('click', transformPage);
+
+            function transformPage() {
+                // console.log('transformPage');
+                body.style.justifyContent = 'flex-start';
+
+                main.classList.add('transformed');
+                flip.classList.add('transformed');
+
+                swapContent();
+
+                main.style.setProperty('--main-padding', `${main.getBoundingClientRect().width / 5}px`);
+
+                main.removeEventListener('click', transformPage);
+            }
+
+            function swapContent() {
+                main.querySelectorAll('.welcome').forEach(el => {
+                    el.classList.add('hidden');
+                });
+
+                main.querySelectorAll('.detail').forEach(el => {
+                    console.log(el);
+                    el.classList.remove('hidden');
+                });
+            }
+        </script>
+
+    </body>
+</html>
