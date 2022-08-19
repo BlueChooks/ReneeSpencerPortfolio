@@ -5,35 +5,60 @@
         <link rel="stylesheet" href="./style.css" />
         <style type="text/css">
             @media (min-width: 600px) {
+                @keyframes pulse {
+                    0% {
+                        height: 35%;
+                        width: 35%;
+                    }
+                    50% {
+                        height: 37%;
+                        width: 37%;
+                    }
+                    100% {
+                        height: 35%;
+                        width: 35%;
+                    }
+                }
+
                 main {
-                    position: absolute;
-                    background-color: #fff;
+                    /* position: absolute; */
+                    /* height: 100%; */
+                    /* transition: height .2s; */
+                }
+
+                /* main.welcome {
                     border-radius: 20px;
                     height: 35%;
                     width: 35%;
                     box-shadow: var(--float-shadow);
-                    /* box-shadow: 0px 0px 20px #444; */
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                }
-                
-                main.transformed {
-                    order: 1;
-                    position: relative;
-                    height: 100%;
-                    width: 66%;
-                    border-radius: 0;
-                    /* align-items: flex-start; */
-                    justify-content: flex-start;
-                    padding-left: var(--main-padding);
+                    margin: auto;
+                    transition: .5s;
+                } */
+
+                /* main.welcome:hover {
+                    cursor: pointer;
+                    height: 37%;
+                    width: 37%;
                 }
 
-                flip-board.transformed {
+                main.welcome * {
+                    cursor: pointer;
+                } */
+
+                flip-board {
+                    width: 34%;
+                    height: 100%;
+                    order: 2;
+                }
+
+                /* flip-board.transformed {
                     order: 2;
                     height: 100%;
                     width: 34%;
-                }
+                } */
 
                 .detail {
                     display: flex;
@@ -43,12 +68,16 @@
                     padding-top: 30%;
                 }
 
+                .rotate-discipline {
+                    color: var(--rand-col);
+                }
+
             }
         </style>
     </head>
     <body>
         <flip-board></flip-board>
-        <main>
+        <!-- <main class="welcome">
             <bounce-text class="welcome">welcome</bounce-text>
 
             <div class="detail hidden">
@@ -59,6 +88,22 @@
                     <a class="btn-link btn-secondary" href="#">come say hi</a>
                 </div>
             </div>
+        </main> -->
+        <main>
+
+            <div class="detail">
+                <bounce-text fixed="true" style="--bounce-size: 55px">Welcome!</bounce-text>
+                <!-- <p>web developer // UI designer // interactive artist</p> -->
+                <p>
+                    I'm Renee Spencer, and I'm a <span class="rotate-discipline">Frontend Web Developer</span><br />
+                    I use code as a medium for creating fun and immersive interactive experiences.<br />
+                    I also have experience with HTML/CSS/Javascript, Typescript, Vue, Tailwind, and Ajax.
+                </p>
+                <div class="btn-container">
+                    <a class="btn btn-link btn-primary" href="#">See my work</a>
+                    <a class="btn btn-link btn-secondary" href="#">Come say hi</a>
+                </div>
+            </div>
         </main>
         <script src="./components/flip-board.js"></script>
         <script src="./components/bounce-text.js"></script>
@@ -66,15 +111,26 @@
             let body = document.querySelector('body');
             let main = document.querySelector('main');
             let flip = document.querySelector('flip-board');
+            let disc = document.querySelector('.rotate-discipline');
+
+            let disciplines = [
+                'Frontend Web Developer',
+                'UI Designer',
+                'Interactive Artist'
+            ];
+
+            setInterval(rotateDisc, 4000);
 
             main.addEventListener('click', transformPage);
 
+            main.style.setProperty('--main-padding', `${main.getBoundingClientRect().width / 5}px`);
+
             function transformPage() {
-                // console.log('transformPage');
                 body.style.justifyContent = 'flex-start';
 
-                main.classList.add('transformed');
+                main.classList.remove('welcome');
                 flip.classList.add('transformed');
+                flip.delayedResize();
 
                 swapContent();
 
@@ -84,7 +140,7 @@
             }
 
             function swapContent() {
-                main.querySelectorAll('.welcome').forEach(el => {
+                main.querySelectorAll('bounce-text.welcome').forEach(el => {
                     el.classList.add('hidden');
                 });
 
@@ -92,6 +148,22 @@
                     console.log(el);
                     el.classList.remove('hidden');
                 });
+            }
+
+            function rotateDisc() {
+                if (disc.innerText === disciplines[0]) {
+                    disc.innerText = disciplines[1]
+                } else if (disc.innerText === disciplines[1]) {
+                    disc.innerText = disciplines[2]
+                } else {
+                    disc.innerText = disciplines[0]
+                }
+            }
+
+            function transitionDisc(newDisc) {
+                // fade out old disc, fade in new
+                // change 'a' to 'an' as necessary
+                // randomly colourise
             }
         </script>
 

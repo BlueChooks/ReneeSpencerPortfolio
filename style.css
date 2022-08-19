@@ -8,11 +8,15 @@
     --colBlue: #48b8e5;
     --colPink: #844591;
     --colRed: #e64521;
+
+    --flipBg: #eee;
     
     --col-primary: var(--colBlue);
 
     --shadow-col: rgba(49, 43, 43, 0.5);
     --float-shadow: 5px 5px 20px var(--shadow-col);
+
+    --stdTrans: .2s;
 }
 
 * {
@@ -26,19 +30,39 @@ body {
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     position: relative;
+}
+
+main {
+    order: 1;
+    position: relative;
+    height: 100%;
+    width: 66%;
+    justify-content: flex-start;
+    padding-left: var(--main-padding);
+    box-shadow: var(--float-shadow);
+    background-color: #fff;
 }
 
 .detail > p {
     font-family: 'Quicksand', sans-serif;
     font-size: 16px;
     margin-top: 14px;
+    line-height: 24px;
 }
 
 .hidden {
     display: none!important;
+}
+
+.btn {
+    transition: calc(var(--stdTrans) / 2);
+}
+
+.btn:hover {
+    transform: translateY(-10px);
 }
 
 .btn-container {
@@ -75,12 +99,10 @@ a.btn-link {
 
 /* =====----- flip board -----===== */
 flip-board {
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
     display: flex;
     position: relative;
     overflow: hidden;
+    background-color: var(--flipBg);
 }
 
 .flip-container {
@@ -95,13 +117,14 @@ flip-board {
 .flipper {
     width: var(--flipSize);
     height: var(--flipSize);
-    transition: .2s;
+    background-color: var(--flipBg);
+    transition: var(--stdTrans);
     transform: rotate3d(-1, -1, 0, 0);
     transform-style: preserve-3d;
 }
 
 .flipper::before, .flipper::after {
-    border: 1px solid #fff;
+    border: 1px solid var(--flipBg);
     /* border-radius: 50%; */
 }
 
@@ -112,7 +135,7 @@ flip-board {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background-color: var(--flipBg);
     backface-visibility: hidden;
     z-index: 2;
 }
@@ -138,16 +161,26 @@ bounce-text {
     font-weight: 600;
     font-size: var(--bounce-size);
     position: relative;
-    /* bottom: calc(var(--bounce-size) / 3); */
     display: flex;
     align-items: flex-end;
     height: calc(var(--bounce-size) * 1.75);
+    /* background-color: blue; */
 }
 
 bounce-text > span {
     cursor: default;
+    height: 80%;
+    transition: height .1s;
+    /* background-color: red; */
 }
 
 bounce-text > span:hover {
     height: 100%;
+}
+
+/* =====----- small utils -----===== */
+
+.fadeout {
+    opacity: 0;
+    transition: var(--stdTrans);
 }
