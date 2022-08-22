@@ -53,10 +53,6 @@ main {
     line-height: 24px;
 }
 
-.hidden {
-    display: none!important;
-}
-
 .btn {
     transition: calc(var(--stdTrans) / 2);
 }
@@ -155,7 +151,6 @@ flip-board {
 }
 
 /* =====----- bounce text -----===== */
-
 bounce-text {
     font-family: 'Quicksand', sans-serif;
     font-weight: 600;
@@ -178,9 +173,25 @@ bounce-text > span:hover {
     height: 100%;
 }
 
-/* =====----- small utils -----===== */
-
-.fadeout {
-    opacity: 0;
-    transition: var(--stdTrans);
+/* =====----- content swapper -----===== */
+content-swapper {
+    white-space: nowrap;
+    transition: opacity var(--transitionTime) ease-in-out;
+    color: var(--randCol);
+    font-weight: 600;
 }
+
+.scrollout {
+    /* width: 10px; */
+    opacity: 0;
+}
+
+/* =====----- utils -----===== */
+.hidden {
+    display: none!important;
+}
+
+.invisible {
+    opacity: 0!important;
+    pointer-events: none;
+;}

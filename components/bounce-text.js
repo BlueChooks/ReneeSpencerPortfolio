@@ -1,19 +1,20 @@
 class BounceText extends HTMLElement {
     constructor() {
         super();
-        this.mut = new MutationObserver((mutations, mut) => {
-            console.log('innertext = ', this.innerText);
-            console.log('mutated');
-            if (!this.classList.contains('hidden')) {
-                this.render();
-            }
-        });
-
+        // this.mut = new MutationObserver((mutations, mut) => {
+        //     // console.log('innertext = ', this.innerText);
+        //     // console.log('mutated');
+        //     if (!this.classList.contains('hidden')) {
+        //         this.render();
+        //     }
+        // });
+        
         this.render();
+        // console.log(this.innerText);
 
-        this.mut.observe(this.parentElement, {
-            attributes: true
-        });
+        // this.mut.observe(this.parentElement, {
+        //     attributes: true
+        // });
     }
 
     render() {
@@ -32,7 +33,9 @@ class BounceText extends HTMLElement {
     convertText() {
         let decoratedText = '';
         for (let i = 0; i < this.innerText.length; i++) {
-            decoratedText += (`<span>${this.innerText[i]}</span>`);
+            // console.log(this.innerText[i]);
+            decoratedText += (`<span${this.innerText[i] === ' ' ? ' style="padding-left:1rem"' : ''}>${this.innerText[i]}</span>`);
+            // console.log(decoratedText);
         }
         this.innerHTML = decoratedText;
     }
