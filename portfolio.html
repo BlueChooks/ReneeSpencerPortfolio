@@ -4,30 +4,71 @@
         <title>Renee Spencer - Portfolio</title>
         <link rel="stylesheet" href="./style.css" />
         <style type="text/css">
-            .detail {
-                    display: flex;
-                    flex-direction: column;
-                    width: 100%;
-                    height: 100%;
-                    padding-top: 30%;
-                }
-
                 flip-board {
                     width: 34%;
                     height: 100%;
                     order: 2;
                 }
+
+                bounce-text {
+                    margin-bottom: var(--stdGap);
+                }
         </style>
     </head>
     <body>
         <main>
+            <a class="back" href="index.html">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
             <div class="detail">
-                <bounce-text fixed="true" style="--bounce-size: 55px">Stay Tuned!</bounce-text>
-                <p>Portfolio coming soon</p>
-                <div class="btn-container">
+                <bounce-text fixed="true" style="--bounce-size: 55px">My Work</bounce-text>
+                <!-- <div class="btn-container">
                     <a class="btn btn-link btn-primary" href="./index.html">Go Back</a>
-                    <a class="btn btn-link btn-secondary invisible" href="#"></a>
-                </div>
+                </div> -->
+
+                <a class="port" href="https://www.figma.com/proto/YRtQUpS0FCRhPO5rqsIyeI/give-app-copy?node-id=34%3A382&starting-point-node-id=200%3A4748">
+                    <div class="port-info">
+                        <h1>The Give App</h1>
+                        <p>
+                            Give is designed to encourage regular giving to charity. The user selects any number  
+                            from a list of partnered charities, links their bank account to Give's system, and whenever 
+                            they spend money, their payment is rounded up to the nearest dollar and the difference is distributed 
+                            amongst their chosen pool of charities.<br />
+                            We wanted to design an easy, unobtrusive way to donate regularly. Give breaks down the barriers of 
+                            commitment and financial strain, with each donation so small as to be unnoticeable, but adding up over time 
+                            into a tangible positive impact.<br />
+                            This project was a group effort. I was responsible for the wireframes, some of the 
+                            higher-fidelity pages, and the interactivity of the prototype.
+                        </p>
+                    </div>
+                    <div class="port-info">
+                        <img src="assets/give-logo.png" />
+                    </div>
+                </a>
+
+                <!-- <a class="port" href="https://www.figma.com/proto/YRtQUpS0FCRhPO5rqsIyeI/give-app-copy?node-id=34%3A382&starting-point-node-id=200%3A4748">
+                    <div class="port-info">
+                        <h1>The Give App</h1>
+                        <p>
+                            Give is designed to encourage regular giving to charity. The user selects any number  
+                            from a list of partnered charities, links their bank account to Give's system, and whenever 
+                            they spend money, their payment is rounded up to the nearest dollar and the difference is distributed 
+                            amongst their chosen pool of charities.<br />
+                            We wanted to design an easy, unobtrusive way to donate regularly. Give breaks down the barriers of 
+                            commitment and financial strain, with each donation so small as to be unnoticeable, but adding up over time 
+                            into a tangible positive impact.<br />
+                            This project was a group effort. I was responsible for the wireframes, some of the 
+                            higher-fidelity pages, and the interactivity of the prototype.
+                        </p>
+                    </div>
+                    <div class="port-info">
+                        <img src="assets/give-logo.png" />
+                    </div>
+                </a> -->
+
+                <a class="port invisible"></a>
+
+                
             </div>
         </main>
         <flip-board></flip-board>

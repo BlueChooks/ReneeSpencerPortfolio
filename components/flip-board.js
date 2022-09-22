@@ -13,6 +13,12 @@ class FlipBoard extends HTMLElement {
         window.addEventListener('resize', () => this.delayedResize());
     }
 
+    // prevent touch scrolling/dragging screen around
+    // connectedCallback() {
+    //     let preventBehaviour = e => e.preventDefault(e);
+    //     document.addEventListener('touchmove', preventBehaviour, {passive: false})
+    // }
+
     render() {
         this.childSize = this.calculateFlipperSize();
         // console.log('flip dims', this.childSize);
@@ -32,7 +38,7 @@ class FlipBoard extends HTMLElement {
         flippers.forEach(flipper => {
             flipper.style.setProperty('--randCol', this.randCol());
 
-            flipper.addEventListener('mouseenter', e => {
+            flipper.addEventListener('mouseenter' || 'touchmove', e => {
                 this.flip(flipper, this.flipDelay);
                 this.getSurrounds(e).forEach(el => {
                     setTimeout(() => {
